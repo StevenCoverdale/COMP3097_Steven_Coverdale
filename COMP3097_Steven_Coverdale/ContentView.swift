@@ -11,6 +11,8 @@ struct ContentView: View {
     
     @State private var number = Int.random(in: 1...200)
     @State private var lastAnswerCorrect: Bool? = nil
+    @State private var correct = 0
+    @State private var wrong = 0
     
     var body: some View {
         VStack(spacing: 30) {
@@ -24,6 +26,9 @@ struct ContentView: View {
                 Text(result ? "Correct" : "Wrong")
                     .font(.title2)
             }
+            
+            Text("Correct: \(correct)   Wrong: \(wrong)")
+                .font(.headline)
             
             HStack(spacing: 40) {
                 Button("Prime") {
@@ -42,6 +47,7 @@ struct ContentView: View {
     
     func handleAnswer(_ isCorrect: Bool) {
         lastAnswerCorrect = isCorrect
+        if isCorrect { correct += 1 } else { wrong += 1 }
         number = Int.random(in: 1...200)
     }
     
