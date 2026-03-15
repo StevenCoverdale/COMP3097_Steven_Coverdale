@@ -22,9 +22,9 @@ struct ContentView: View {
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var body: some View {
-        VStack(spacing: 30) {
+        VStack(spacing: 40) {
             Text("Lab 1 - Prime or Not")
-                .font(.title)
+                .font(.largeTitle)
             
             Text("\(number)")
                 .font(.system(size: 80, weight: .bold))
@@ -35,25 +35,23 @@ struct ContentView: View {
                     .foregroundColor(result ? .green : .red)
             }
             
-            Text("Time: \(timeRemaining)")
-                .font(.headline)
+            VStack(spacing: 10) {
+                Text("Time: \(timeRemaining)")
+                Text("Attempts: \(attempts)")
+                Text("Correct: \(correct)   Wrong: \(wrong)")
+            }
+            .font(.headline)
             
-            Text("Attempts: \(attempts)")
-                .font(.headline)
-            
-            Text("Correct: \(correct)   Wrong: \(wrong)")
-                .font(.headline)
-            
-            HStack(spacing: 40) {
+            HStack(spacing: 60) {
                 Button("Prime") {
                     handleAnswer(isPrime(number))
                 }
-                .font(.title)
+                .font(.title2)
                 
                 Button("Not Prime") {
                     handleAnswer(!isPrime(number))
                 }
-                .font(.title)
+                .font(.title2)
             }
         }
         .padding()
@@ -72,7 +70,6 @@ struct ContentView: View {
         }
         .alert("Results", isPresented: $showDialog) {
             Button("OK") {
-                // reset after dialog
                 correct = 0
                 wrong = 0
                 attempts = 0
