@@ -71,7 +71,15 @@ struct ContentView: View {
             }
         }
         .alert("Results", isPresented: $showDialog) {
-            Button("OK") { }
+            Button("OK") {
+                // reset after dialog
+                correct = 0
+                wrong = 0
+                attempts = 0
+                timeRemaining = 5
+                timerPaused = false
+                nextNumber()
+            }
         } message: {
             Text("Correct: \(correct)\nWrong: \(wrong)")
         }
