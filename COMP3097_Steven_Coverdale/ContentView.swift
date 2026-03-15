@@ -17,6 +17,7 @@ struct ContentView: View {
     
     @State private var timeRemaining = 5
     @State private var showDialog = false
+    @State private var timerPaused = false
     
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
@@ -57,14 +58,16 @@ struct ContentView: View {
         }
         .padding()
         .onReceive(timer) { _ in
-            if timeRemaining > 0 {
-                timeRemaining -= 1
-            } else {
-                attempts += 1
-                wrong += 1
-                lastAnswerCorrect = false
-                checkDialog()
-                nextNumber()
+            if !timerPaused {
+                if timeRemaining > 0 {
+                    timeRemaining -= 1
+                } else {
+                    attempts += 1
+                    wrong += 1
+                    lastAnswerCorrect = false
+                    checkDialog()
+                    nextNumber()
+                }
             }
         }
         .alert("Results", isPresented: $showDialog) {
@@ -84,6 +87,7 @@ struct ContentView: View {
     
     func checkDialog() {
         if attempts == 10 {
+            timerPaused = true
             showDialog = true
         }
     }
