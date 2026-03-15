@@ -17,6 +17,8 @@ struct ContentView: View {
     
     @State private var timeRemaining = 5
     
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    
     var body: some View {
         VStack(spacing: 30) {
             Text("Lab 1 - Prime or Not")
@@ -53,6 +55,11 @@ struct ContentView: View {
             }
         }
         .padding()
+        .onReceive(timer) { _ in
+            if timeRemaining > 0 {
+                timeRemaining -= 1
+            }
+        }
     }
     
     func handleAnswer(_ isCorrect: Bool) {
