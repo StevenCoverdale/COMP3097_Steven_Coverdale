@@ -54,6 +54,10 @@ struct ContentView: View {
         attempts += 1
         lastAnswerCorrect = isCorrect
         if isCorrect { correct += 1 } else { wrong += 1 }
+        nextNumber()
+    }
+    
+    func nextNumber() {
         number = Int.random(in: 1...200)
     }
     
