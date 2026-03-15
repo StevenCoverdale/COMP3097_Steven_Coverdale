@@ -24,8 +24,9 @@ struct ContentView: View {
                 .font(.system(size: 80, weight: .bold))
             
             if let result = lastAnswerCorrect {
-                Text(result ? "Correct" : "Wrong")
-                    .font(.title2)
+                Text(result ? "✓" : "✗")
+                    .font(.system(size: 60))
+                    .foregroundColor(result ? .green : .red)
             }
             
             Text("Attempts: \(attempts)")
