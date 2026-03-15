@@ -25,6 +25,7 @@ struct ContentView: View {
         VStack(spacing: 40) {
             Text("Lab 1 - Prime or Not")
                 .font(.largeTitle)
+                .foregroundColor(.blue)
             
             Text("\(number)")
                 .font(.system(size: 80, weight: .bold))
@@ -37,6 +38,7 @@ struct ContentView: View {
             
             VStack(spacing: 10) {
                 Text("Time: \(timeRemaining)")
+                    .foregroundColor(.gray)
                 Text("Attempts: \(attempts)")
                 Text("Correct: \(correct)   Wrong: \(wrong)")
             }
