@@ -21,17 +21,25 @@ struct ContentView: View {
             
             HStack(spacing: 40) {
                 Button("Prime") {
-                    // logic later
+                    let _ = isPrime(number)
                 }
                 .font(.title)
                 
                 Button("Not Prime") {
-                    // logic later
+                    let _ = !isPrime(number)
                 }
                 .font(.title)
             }
         }
         .padding()
+    }
+    
+    func isPrime(_ n: Int) -> Bool {
+        if n < 2 { return false }
+        for i in 2..<Int(Double(n).squareRoot()) + 1 {
+            if n % i == 0 { return false }
+        }
+        return true
     }
 }
 
