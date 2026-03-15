@@ -47,11 +47,17 @@ struct ContentView: View {
                     handleAnswer(isPrime(number))
                 }
                 .font(.title2)
+                .padding()
+                .background(Color.green.opacity(0.2))
+                .cornerRadius(10)
                 
                 Button("Not Prime") {
                     handleAnswer(!isPrime(number))
                 }
                 .font(.title2)
+                .padding()
+                .background(Color.red.opacity(0.2))
+                .cornerRadius(10)
             }
         }
         .padding()
