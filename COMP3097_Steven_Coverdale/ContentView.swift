@@ -9,23 +9,16 @@ import SwiftUI
 
 struct ContentView: View {
     
-    // Current random number
     @State private var number = Int.random(in: 1...200)
-    
-    // Last answer result
     @State private var lastAnswerCorrect: Bool? = nil
-    
-    // Score tracking
     @State private var correct = 0
     @State private var wrong = 0
     @State private var attempts = 0
     
-    // Timer state
     @State private var timeRemaining = 5
     @State private var showDialog = false
     @State private var timerPaused = false
     
-    // 1-second timer
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var body: some View {
@@ -75,7 +68,6 @@ struct ContentView: View {
                 if timeRemaining > 0 {
                     timeRemaining -= 1
                 } else {
-                    // Timeout = wrong answer
                     attempts += 1
                     wrong += 1
                     lastAnswerCorrect = false
@@ -86,7 +78,6 @@ struct ContentView: View {
         }
         .alert("Results", isPresented: $showDialog) {
             Button("OK") {
-                // Reset after each 10-attempt round
                 correct = 0
                 wrong = 0
                 attempts = 0
