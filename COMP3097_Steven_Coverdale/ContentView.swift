@@ -15,6 +15,8 @@ struct ContentView: View {
     @State private var wrong = 0
     @State private var attempts = 0
     
+    @State private var timeRemaining = 5
+    
     var body: some View {
         VStack(spacing: 30) {
             Text("Lab 1 - Prime or Not")
@@ -28,6 +30,9 @@ struct ContentView: View {
                     .font(.system(size: 60))
                     .foregroundColor(result ? .green : .red)
             }
+            
+            Text("Time: \(timeRemaining)")
+                .font(.headline)
             
             Text("Attempts: \(attempts)")
                 .font(.headline)
@@ -59,6 +64,7 @@ struct ContentView: View {
     
     func nextNumber() {
         number = Int.random(in: 1...200)
+        timeRemaining = 5
     }
     
     func isPrime(_ n: Int) -> Bool {
