@@ -58,6 +58,12 @@ struct ContentView: View {
         .onReceive(timer) { _ in
             if timeRemaining > 0 {
                 timeRemaining -= 1
+            } else {
+                // timeout = wrong answer
+                attempts += 1
+                wrong += 1
+                lastAnswerCorrect = false
+                nextNumber()
             }
         }
     }
