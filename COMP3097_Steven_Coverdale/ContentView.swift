@@ -8,15 +8,18 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var number = Int.random(in: 1...200)
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        VStack(spacing: 20) {
+            Text("Lab 1 - Prime or Not")
+                .font(.title)
+            
+            Text("\(number)")
+                .font(.system(size: 80, weight: .bold))
         }
         .padding()
-        
     }
 }
 
